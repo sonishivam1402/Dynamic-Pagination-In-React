@@ -3,7 +3,7 @@ import '../styles/product.css';
 
 const Product = () => {
     const [data, setData] = useState([]);
-    const [skip, setSkip] = useState(0); 
+    const [skip, setSkip] = useState(0);
     const [limit, setLimit] = useState(5);
     //const limit = 5;
     const [total, setTotal] = useState(30);
@@ -20,7 +20,7 @@ const Product = () => {
 
     useEffect(() => {
         loadDataFetch(limit, skip);
-    }, [limit,skip]); 
+    }, [limit, skip]);
 
     const pageNumber = () => {
         let btnCount = total / limit;
@@ -28,7 +28,7 @@ const Product = () => {
 
         for (let i = 0; i < btnCount; i++) {
             buttons.push(
-                <button key={i} onClick={() => handlePageClick(i * btnCount)}>
+                <button key={i} onClick={() => handlePageClick(i * btnCount)} className={(i * btnCount) == skip ? "active" : ""}>
                     {i + 1}
                 </button>
             );
@@ -37,16 +37,16 @@ const Product = () => {
     };
 
     const handlePageClick = (page) => {
-        setSkip(page); 
+        setSkip(page);
     };
 
     const pageNav = (e) => {
         const action = e.target.getAttribute("data-action");
         setSkip((prevSkip) => {
             let newSkip = prevSkip;
-            if(action==="prev"){
+            if (action === "prev") {
                 newSkip -= Number(limit);
-            }else{
+            } else {
                 newSkip += Number(limit);
             }
             return newSkip;
@@ -67,9 +67,9 @@ const Product = () => {
                 <div className='form-container'>
                     <form action={showProduct}>
                         <label htmlFor="totalProducts">Total Products to have : </label>
-                        <input type="number" name='totalProducts' min={0}/><br/><br/>
+                        <input type="number" name='totalProducts' min={0} /><br /><br />
                         <label htmlFor="limitProducts">Products to display per page : </label>
-                        <input type="number" name='limitProducts' min={0}/><br/><br/>
+                        <input type="number" name='limitProducts' min={0} /><br /><br />
                         <button type='submit'>Submit</button>
                     </form>
                 </div>
