@@ -62,18 +62,14 @@ const FrontendHeavyPagination = () => {
           <ProductCard key={product.id} title={product.title} image={product.thumbnail} price={product.price} />
         ))}
       </div>
-      <div className="button-container">
-
-
-
-
-        {/* Load More Button */}
-        {/* {showCard < total && (
+      {/* <div className="button-container">
+        Load More Button
+        {showCard < total && (
           <button onClick={() => setShowCard((prev) => prev + 5)} className="load-more">
             Load More
           </button>
-        )} */}
-      </div>
+        )}
+      </div> */}
     </div>
   );
 };
